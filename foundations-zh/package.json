@@ -1,19 +1,40 @@
 {
-  "name": "@leetcode-hire/foundations-zh",
-  "version": "1.0.0",
-  "description": "Frontend foundation problem for leetcode-cn.com",
-  "main": "lib/index.js",
-  "repository": "https://github.com/LeetCode-OpenSource/hire",
-  "author": "lynweklm@gmail.com",
-  "license": "MIT",
-  "scripts": {
-    "build": "shx rm -rf lib && tsc -p tsconfig.json --outDir lib"
-  },
-  "devDependencies": {
-    "shx": "^0.3.2",
-    "typescript": "^3.6.2"
-  },
-  "dependencies": {
-    "tslib": "^1.10.0"
-  }
+    "name": "@leetcode-hire/foundations-zh",
+    "version": "1.0.0",
+    "description": "Frontend foundation problem for leetcode-cn.com",
+    "main": "lib/index.js",
+    "repository": "https://github.com/LeetCode-OpenSource/hire",
+    "author": "lynweklm@gmail.com",
+    "license": "MIT",
+    "scripts": {
+        "build": "shx rm -rf lib && tsc -p tsconfig.json --outDir lib",
+        "eslint": "eslint src/index.ts",
+        "test": "jest"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.9.0",
+        "@babel/preset-env": "^7.9.5",
+        "@babel/preset-typescript": "^7.9.0",
+        "@commitlint/cli": "^8.3.5",
+        "@commitlint/config-conventional": "^8.3.4",
+        "@typescript-eslint/eslint-plugin": "^2.28.0",
+        "@typescript-eslint/parser": "^2.28.0",
+        "babel-jest": "^25.3.0",
+        "eslint": "^6.8.0",
+        "eslint-plugin-jest": "^23.8.2",
+        "husky": "^4.2.5",
+        "jest": "^25.3.0",
+        "prettier": "^2.0.4",
+        "shx": "^0.3.2",
+        "typescript": "^3.6.2"
+    },
+    "dependencies": {
+        "tslib": "^1.10.0"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "yarn eslint && yarn test",
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+        }
+    }
 }
