@@ -7,15 +7,11 @@ on:
   push:
     branches:
     - master 
-  pull_request:
-    branches: 
-    - master 
 
 jobs:
-  build:
-
+  test&lint:
+    name: Run test and lint
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [10.x, 12.x]
@@ -26,10 +22,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    
     - name: install, test and lint
     - run: |
         npm i
         npm run test
         npm run lint
+        
       env:
         CI: true
