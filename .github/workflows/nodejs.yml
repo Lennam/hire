@@ -6,28 +6,29 @@ name: Node.js CI
 on:
   push:
     branches:
-    - master 
+      - master
 
 jobs:
-  test-lint:
+  test-foundations:
     name: Run test and lint
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        node-version: [10.x]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    
-    - name: install, test and lint
-      run: |
-        npm i
-        npm run test
-        npm run lint
-        
-      env:
-        CI: true
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: install, test and lint
+        run: |
+          cd foudations-zh
+          npm i
+          npm run test
+          npm run lint
+
+        env:
+          CI: true
