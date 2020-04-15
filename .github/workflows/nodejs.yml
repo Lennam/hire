@@ -24,6 +24,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: install, test and lint
+        working-directory: foundations-zh
         run: |
           cd foudations-zh
           npm i
